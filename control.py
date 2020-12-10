@@ -24,7 +24,7 @@ class PowerstripController:
 
     async def discover_smart_strips(self):
         devices_on_network = await Discover.discover()
-        smart_strips = [d for _, d in devices_on_network.items() if isinstance(d, SmartStrip)]
+        smart_strips = [d for d in devices_on_network.values() if isinstance(d, SmartStrip)]
         print(f"Found {len(smart_strips)} smart strips")
         return smart_strips
 
