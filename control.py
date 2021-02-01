@@ -30,20 +30,18 @@ class PowerstripController:
 
     @safe
     def turn_off(self, alias: str):
-        if self.plug_mapping[alias].is_on:
-            return asyncio.run(self.plug_mapping[alias].turn_off())
+        return asyncio.run(self.plug_mapping[alias].turn_off())
 
     @safe
     def turn_on(self, alias: str):
-        if not self.plug_mapping[alias].is_on:
-            return asyncio.run(self.plug_mapping[alias].turn_on())
+        return asyncio.run(self.plug_mapping[alias].turn_on())
 
 
 if __name__ == "__main__":
     import time
 
     c = PowerstripController()
-    ALIASES = {"A", "B", "C"}
+    ALIASES = {"A", "B", "C", "B-1", "B-2", "B-3", "B-4", "B-5", "B-6"}
     for a in ALIASES:
         c.turn_on(a)
     time.sleep(3)
